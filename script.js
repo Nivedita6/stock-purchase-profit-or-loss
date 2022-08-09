@@ -10,19 +10,29 @@ function submitHandler(){
     var qty = stockQuantity.value;
     var curr = currentPrice.value;
 
-    calculateProfitAndLoss(inp, qty, curr);
+    if(inp === '' | qty === '' | curr === ''){
+        alert("Please fill out all Fields");
+    }
+    else{
+        calculateProfitAndLoss(inp, qty, curr);
+    }
+
 }
 
 function calculateProfitAndLoss(intial, quantity, current){
     if(intial < current){
         var profit = (current - intial ) * quantity;
+        var limitProfit = profit.toFixed(2);
         var profitPercentage = (profit/intial) * 100;
-        showOutput("The profit is " + profit + " and profit percentage is " + profitPercentage);
+        outputStock.style.color = 'green';
+        showOutput("The profit is " + limitProfit + " and profit percentage is " + profitPercentage);
     }
     else if(current < intial){
         var loss = (intial - current ) * quantity;
+        var limitLoss = loss.toFixed(2);
         var lossPercentage = (loss/intial) * 100;
-        showOutput("The loss is " + loss + " and loss percentage is " + lossPercentage);
+        outputStock.style.color = 'red';
+        showOutput("The loss is " + limitLoss + " and loss percentage is " + lossPercentage);
     }
     else{
         showOutput("No pain no gain");
