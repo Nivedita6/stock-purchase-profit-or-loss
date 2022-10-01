@@ -23,14 +23,14 @@ function calculateProfitAndLoss(intial, quantity, current){
     if(intial < current){
         var profit = (current - intial ) * quantity;
         var limitProfit = profit.toFixed(2);
-        var profitPercentage = (profit/intial) * 100;
+        var profitPercentage = (profit/(intial * quantity)) * 100;
         outputStock.style.color = 'green';
         showOutput("The profit is " + limitProfit + " and profit percentage is " + profitPercentage);
     }
     else if(current < intial){
         var loss = (intial - current ) * quantity;
         var limitLoss = loss.toFixed(2);
-        var lossPercentage = (loss/intial) * 100;
+        var lossPercentage = (loss/(intial * quantity)) * 100;
         outputStock.style.color = 'red';
         showOutput("The loss is " + limitLoss + " and loss percentage is " + lossPercentage);
     }
